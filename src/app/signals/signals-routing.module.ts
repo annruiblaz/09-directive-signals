@@ -6,10 +6,16 @@ import { UserInfoPageComponent } from './pages/user-info-page/user-info-page.com
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 
 const routes: Routes = [
-  { path: 'counter', component: CounterPageComponent},
-  { path: 'user-info', component: UserInfoPageComponent},
-  { path: 'properties', component: PropertiesPageComponent},
-  { path: '**', redirectTo: 'counter'},
+  {
+    path: '',
+    component: SignalsLayoutComponent,
+    children: [
+      { path: 'counter', component: CounterPageComponent},
+      { path: 'user-info', component: UserInfoPageComponent},
+      { path: 'properties', component: PropertiesPageComponent},
+      { path: '**', redirectTo: 'counter'},
+    ]
+  }
 
 ];
 
