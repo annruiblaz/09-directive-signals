@@ -1,1 +1,22 @@
-<p>user-info-page works!</p>
+<h1>Información del usuario</h1>
+<hr>
+
+<div class="row">
+    <div class="col-4">
+        <h3>Usuario actual: {{userId()}}</h3>
+
+        <button class="btn btn-primary" (click)="loadUser( userId() -1)">Anterior</button>
+        &nbsp;
+        <button class="btn btn-primary" (click)="loadUser( userId() +1)">Siguiente</button>
+    </div>
+
+    <div class="col-8" *ngIf="userWasFound()">
+        <img [src]="currentUser()?.avatar" alt="avatar" class="rounded">
+        <h5>Correo: {{currentUser()!.email}}</h5>
+        <h5>Nombre: {{fullName()}}</h5>
+    </div>
+
+    <div class="col-8 text-danger" *ngIf="!userWasFound()">
+        <h3>Usuario no encontrado</h3>
+    </div>
+</div>
